@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth box-border bg-primary/30;
+  }
+  body {
+    @apply font-sans;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary: 255, 251, 255;
+  --secondary: 7, 34, 4;
+  --primary-accent: 0, 77, 148;
+  --secondary-accent: 0, 242, 255;
+  --green-accent: 31, 175, 31;
+  --gray-accent: 105, 109, 125;
+  --black-accent: 7, 7, 7;
+}
