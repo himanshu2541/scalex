@@ -38,44 +38,6 @@ const Contact = () => {
     });
   };
 
-  // const onSubmit = async (data) => {
-  //   setLoading(true);
-  //   const formData = new FormData();
-  //   Object.entries(data).forEach(([key, value]) => formData.append(key, value));
-  //   console.log(data);
-
-  //   try {
-  //     const response = await fetch(scriptUrl, {
-  //       method: "POST",
-  //       mode: "no-cors",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     if (response.ok) {
-  //       const result = await response.json();
-  //       console.log("Form Submitted:", result);
-
-  //       if (result.result === "success") {
-  //         reset();
-  //         alert("Form submitted successfully!");
-  //       } else {
-  //         console.error("Error in response:", result.error);
-  //         alert("There was an error submitting the form.");
-  //       }
-  //     } else {
-  //       console.error("Network response was not ok:", response.statusText);
-  //       alert("There was a network error. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Form submission error:", error);
-  //     alert("An error occurred while submitting the form.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const onSubmit = async (data) => {
     setLoading(true);

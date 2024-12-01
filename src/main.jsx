@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Root from "./layout/Root.jsx";
+import Admin from "./pages/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         element: <Home />,
         index: true,
       },
+      {
+        path: "admin",
+        element: <Admin />
+      }
     ],
   },
 ]);
