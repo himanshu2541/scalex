@@ -10,6 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactSchema } from "./contactSchema";
 import MobileInput from "../input/MobileInput";
 import MultiSelectInput from "../input/MultiSelectInput";
+import axios from "../../api/axios";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const {
@@ -36,43 +38,74 @@ const Contact = () => {
     });
   };
 
-  const scriptUrl =
-    "https://script.google.com/macros/s/AKfycbxaPF4rxfS5ldinecjLSaPNRxGitjt9B3DamvGFUu2RROudjybtgv7urMOgtn4LKHfTWA/exec";
+  // const onSubmit = async (data) => {
+  //   setLoading(true);
+  //   const formData = new FormData();
+  //   Object.entries(data).forEach(([key, value]) => formData.append(key, value));
+  //   console.log(data);
+
+  //   try {
+  //     const response = await fetch(scriptUrl, {
+  //       method: "POST",
+  //       mode: "no-cors",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       console.log("Form Submitted:", result);
+
+  //       if (result.result === "success") {
+  //         reset();
+  //         alert("Form submitted successfully!");
+  //       } else {
+  //         console.error("Error in response:", result.error);
+  //         alert("There was an error submitting the form.");
+  //       }
+  //     } else {
+  //       console.error("Network response was not ok:", response.statusText);
+  //       alert("There was a network error. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Form submission error:", error);
+  //     alert("An error occurred while submitting the form.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const onSubmit = async (data) => {
     setLoading(true);
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => formData.append(key, value));
-    console.log(data);
 
     try {
-      const response = await fetch(scriptUrl, {
-        method: "POST",
-        mode: "no-cors",
+      const response = await axios.post("/contact-form", data, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Form Submitted:", result);
-
-        if (result.result === "success") {
-          reset();
-          alert("Form submitted successfully!");
-        } else {
-          console.error("Error in response:", result.error);
-          alert("There was an error submitting the form.");
-        }
+      if (
+        response.status === 201 ||
+        response.data.message === "Contact saved successfully"
+      ) {
+        toast.success("Form submitted successfully!");
+        reset();
       } else {
-        console.error("Network response was not ok:", response.statusText);
-        alert("There was a network error. Please try again.");
+        console.error(
+          "Error in response:",
+          response.data.error || "Unknown error"
+        );
+        toast.error("There was an error submitting the form.");
       }
     } catch (error) {
-      console.error("Form submission error:", error);
-      alert("An error occurred while submitting the form.");
+      console.error(
+        "Form submission error:",
+        error.response?.data || error.message
+      );
+      toast.error("An error occurred while submitting the form.");
     } finally {
       setLoading(false);
     }

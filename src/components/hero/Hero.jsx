@@ -3,6 +3,7 @@ import MaxWidthContainer from "../MaxWidthContainer";
 import ButtonType1 from "../buttons/ButtonType1";
 import FadeIn from "../animations/FadeIn";
 import PopUp from "../animations/PopUp";
+import { Link as InPageLink } from "react-scroll";
 
 const Hero = () => {
   return (
@@ -29,8 +30,15 @@ const Hero = () => {
         </FadeIn>
       </MaxWidthContainer>
 
-      <PopUp scale={0.9} delay="0.8" duration="0.4" className="flex gap-4 flex-col sm:flex-row">
-        <ButtonType1>Get a Free Consultation</ButtonType1>
+      <PopUp
+        scale={0.9}
+        delay="0.8"
+        duration="0.4"
+        className="flex gap-4 flex-col sm:flex-row"
+      >
+        <InPageLink to="contact" offset={-150}>
+          <ButtonType1>Get a Free Consultation</ButtonType1>
+        </InPageLink>
         <ButtonType1 secondary>Learn More</ButtonType1>
       </PopUp>
     </div>

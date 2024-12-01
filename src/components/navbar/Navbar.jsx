@@ -75,9 +75,11 @@ const Navbar = () => {
           </ul>
           <div className="flex gap-3 items-center justify-center">
             <div className="hidden sm:block">
-              <ButtonType1 small className={"select-none"}>
-                Book a Free Call
-              </ButtonType1>
+            <InPageLink to="contact">
+                <ButtonType1 small offset={-150} className={"select-none"}>
+                  Book a Free call
+                </ButtonType1>
+              </InPageLink>
             </div>
             <div
               className="block md:hidden cursor-pointer p-[2px]"
@@ -103,7 +105,11 @@ const Navbar = () => {
               </li>
             ))}
             <li className="sm:hidden">
-              <ButtonType1 small>Book a Free call</ButtonType1>
+              <InPageLink to="contact">
+                <ButtonType1 small offset={-150}>
+                  Book a Free call
+                </ButtonType1>
+              </InPageLink>
             </li>
           </ul>
         </motion.div>
