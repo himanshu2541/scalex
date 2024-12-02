@@ -66,7 +66,7 @@ const Navbar = () => {
               Logo
             </Link>
           </div>
-          <ul className="hidden md:flex gap-4">
+          <ul className="hidden md:flex gap-2">
             {navLinks.map((link, i) => (
               <li key={i}>
                 <NavLinkButton link={link} small />
