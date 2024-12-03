@@ -2,20 +2,19 @@ import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/hero/Hero";
 import MaxWidthContainer from "../components/MaxWidthContainer";
-// import Services from "../components/services/Services";
 import WhyUs from "../components/whyus/WhyUs";
 import FAQ from "../components/FAQ/FAQ";
 import Impact from "../components/impact/Impact";
-import Process from "../components/process/Process";
 import Footer from "../components/footer/Footer";
 import Services2 from "../components/services/Services2";
 import Contact from "../components/contact/Contact";
 import Work from "../components/work/Work";
 import About from "../components/about/About";
+import Process2 from "../components/process/Process2";
 
 const Home = () => {
   return (
-    <div className="">
+    <div>
       <Navbar />
       <MaxWidthContainer>
         <Hero />
@@ -32,7 +31,8 @@ const Home = () => {
         <Impact />
       </MaxWidthContainer>
       <MaxWidthContainer className={"mt-24 relative"}>
-        <Process />
+        {/* <Process /> */}
+        <Process2 />
       </MaxWidthContainer>
       <Work />
       <MaxWidthContainer className={"mt-24"}>

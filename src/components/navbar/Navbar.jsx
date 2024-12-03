@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { RiMenu4Fill } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import FadeIn from "../animations/FadeIn";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { Link as InPageLink } from "react-scroll";
+import { Link as InPageLink} from "react-scroll";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -20,6 +20,7 @@ const Navbar = () => {
   ];
 
   const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const hamMenuVariants = {
     closed: {
@@ -33,20 +34,26 @@ const Navbar = () => {
       y: 0,
     },
   };
-
   useEffect(() => {
-    let handler = () => {
-      setOpen(false);
+    const handler = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
     };
+
     document.addEventListener("mousedown", handler);
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
 
   return (
     <>
-      <div className="flex h-24 items-center justify-center fixed top-0 inset-x-0 z-50 px-4 sm:px-8 md:px-12 ">
+      <div
+        className="flex h-24 items-center justify-center fixed top-0 inset-x-0 z-50 px-4 sm:px-8 md:px-12 "
+        ref={menuRef}
+      >
         <FadeIn
           direction="down"
           delay="0.5"
@@ -75,7 +82,7 @@ const Navbar = () => {
           </ul>
           <div className="flex gap-3 items-center justify-center">
             <div className="hidden sm:block">
-            <InPageLink to="contact">
+              <InPageLink to="contact">
                 <ButtonType1 small offset={-150} className={"select-none"}>
                   Book a Free call
                 </ButtonType1>
@@ -96,12 +103,19 @@ const Navbar = () => {
           initial={"closed"}
           animate={open ? "open" : "closed"}
           transition={{ duration: 0.25 }}
-          onClick={() => setOpen(false)}
         >
           <ul className="flex flex-col gap-2 border-[1px] border-primary-white/15 rounded-lg p-4 mx-4 sm:mx-0">
             {navLinks.map((link, i) => (
               <li key={i}>
-                <NavLinkButton link={link} />
+                <NavLinkButton
+                  link={link}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setTimeout(() => {
+                      setOpen(false);
+                    }, 1000);
+                  }}
+                />
               </li>
             ))}
             <li className="sm:hidden">
@@ -120,7 +134,12 @@ const Navbar = () => {
 
 export default Navbar;
 
-const NavLinkButton = ({ link, small = false }) => {
+const NavLinkButton = ({
+  link,
+  small = false,
+  onClick = () => {},
+  onSetActive = () => {},
+}) => {
   return link.isNavLink ? (
     <Link
       to={link.href}
@@ -136,9 +155,11 @@ const NavLinkButton = ({ link, small = false }) => {
       activeClass="text-green-accent link-active bg-black/5"
       offset={-150}
       spy={true}
+      duration={500}
       className={` backdrop-blur-[10px] ${
         small ? "px-3 py-2 text-sm" : "px-6 py-2 text-md"
       } rounded-lg cursor-pointer bg-white/0 hover:bg-black/5 duration-300 transition-all`}
+      onClick={onClick}
     >
       {link.title}
     </InPageLink>

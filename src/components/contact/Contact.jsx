@@ -172,6 +172,7 @@ const Contact = () => {
             <MessageInput
               id={"message"}
               label={"Message"}
+              placeholder="Describe us about your project!"
               register={register}
               errors={errors}
             />
