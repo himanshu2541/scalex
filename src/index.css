@@ -35,3 +35,13 @@
   --gray-accent: 105, 109, 125;
   --black-accent: 7, 7, 7;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+}

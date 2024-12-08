@@ -19,9 +19,6 @@ const Home = () => {
       <MaxWidthContainer>
         <Hero />
       </MaxWidthContainer>
-      {/* <MaxWidthContainer className={"-mt-32"}>
-        <ServicesOverView />
-      </MaxWidthContainer> */}
       <div className="-mt-32 sm:-mt-28">
         <WhyUs />
       </div>
