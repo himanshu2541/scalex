@@ -35,7 +35,7 @@ const InstagramReels = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-16 px-4">
+    <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-12">
       <WorkPageTopBar title="Instagram Reels" />
 
       {/* Reel Cards */}
@@ -77,7 +77,7 @@ const InstagramReels = () => {
               src={`https://www.instagram.com/reel/${activeReel}/embed`}
               width="100%"
               height="100%"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;"
               allowFullScreen
               title="Active Instagram Reel"
               className="w-full h-full"

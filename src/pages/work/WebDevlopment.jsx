@@ -59,7 +59,7 @@ const WebDevelopment = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-16 px-4">
+    <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-12">
       <WorkPageTopBar title="Web Development" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {projects.map((project) => (
@@ -97,7 +97,7 @@ const WebDevelopment = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 transition"
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 transition z-10"
               onClick={closeModal}
             >
               <RxCross2 size={24} />

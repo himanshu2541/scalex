@@ -36,7 +36,7 @@ const VideoContent = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-16 px-4">
+    <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-12">
       <WorkPageTopBar title="Video Editing" />
       {/* Video Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
