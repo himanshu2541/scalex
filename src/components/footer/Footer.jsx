@@ -4,6 +4,10 @@ import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import FadeIn from "../animations/FadeIn";
 import PopUp from "../animations/PopUp";
+import workLinks from "../work/workLinks";
+import { Link as InPageLink } from "react-scroll";
+import { Link } from "react-router-dom";
+import navLinks from "../navbar/navLinks";
 
 const Footer = () => {
   const socialMedias = [
@@ -16,27 +20,18 @@ const Footer = () => {
   const footerItems = [
     {
       heading: "menu",
-      content: [
-        { title: "Impact", href: "/" },
-        { title: "Services", href: "/" },
-        { title: "Process", href: "/" },
-        { title: "About Us", href: "/" },
-        { title: "FAQs", href: "/" },
-        { title: "Contact", href: "/" },
-      ],
+      content: navLinks.map((link) => ({ ...link, inPageLink: true })),
     },
     {
       heading: "pages",
-      content: [
-        { title: "Page 1", href: "/" },
-        { title: "Page 2", href: "/" },
-        { title: "Page 3", href: "/" },
-        { title: "Page 4", href: "/" },
-      ],
+      content: workLinks.map((work) => ({
+        title: work.title,
+        href: work.link,
+      })),
     },
   ];
   return (
-    <div className="bg-black/95 text-white" >
+    <div className="bg-black/95 text-white">
       <MaxWidthContainer>
         <div className="px-10 py-20 grid grid-cols-1 sm:grid-cols-3 gap-10">
           <div className=" col-span-1">
@@ -77,7 +72,19 @@ const Footer = () => {
                   <ul className="flex flex-col gap-4 text-md text-white/80">
                     {item.content.map((link, i) => (
                       <li key={i}>
-                        <a href={link.href}>{link.title}</a>
+                        {/* <a href={link.href}>{link.title}</a> */}
+                        {link.inPageLink ? (
+                          <InPageLink
+                            to={link.href}
+                            offset={-150}
+                            duration={500}
+                            className="cursor-pointer"
+                          >
+                            {link.title}
+                          </InPageLink>
+                        ) : (
+                          <Link to={link.href}>{link.title}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>

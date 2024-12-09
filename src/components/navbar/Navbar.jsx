@@ -5,20 +5,12 @@ import { RxCross2 } from "react-icons/rx";
 import FadeIn from "../animations/FadeIn";
 import React, { useEffect, useRef, useState } from "react";
 
-import { Link as InPageLink} from "react-scroll";
+import { Link as InPageLink } from "react-scroll";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const navLinks = [
-    { title: "Services", href: "services" },
-    { title: "Impact", href: "impact" },
-    { title: "Process", href: "process" },
-    { title: "Work", href: "work" },
-    { title: "About Us", href: "about" },
-    { title: "FAQs", href: "faqs" },
-    { title: "Contact", href: "contact" },
-  ];
+import navLinks from "./navLinks";
 
+const Navbar = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -46,7 +38,6 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
-
 
   return (
     <>
@@ -138,7 +129,6 @@ const NavLinkButton = ({
   link,
   small = false,
   onClick = () => {},
-  onSetActive = () => {},
 }) => {
   return link.isNavLink ? (
     <Link

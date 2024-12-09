@@ -28,6 +28,7 @@ const Contact = () => {
   const selectedInterests = watch("interest", []);
   const selectedBudget = watch("budget", "");
   const phoneNumber = watch("phone", "");
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
 
   const setCustomValue = (id, value) => {
@@ -85,7 +86,7 @@ const Contact = () => {
     { value: "digital_marketing", label: "Digital Marketing" },
   ];
 
-  const whatsappNumber = "919628849015"; // Replace with your WhatsApp number
+  const whatsappNumber = "917249832575"; // Replace with your WhatsApp number
   const whatsappMessage = "Hello, I'd like to connect!"; // Replace with your desired message
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import WorkTopBarLink from "../../components/work/WorkTopBarLink";
 import { FaPlay } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import WorkPageTopBar from "../../components/work/WorkPageTopBar";
 
 const videoData = [
   {
@@ -37,23 +36,8 @@ const VideoContent = () => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-12 px-4">
-      <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
-        Video Editing
-      </h1>
-      {/* Back to Home Button */}
-      <Link
-        to="/"
-        className="inline-block text-sm text-black-accent hover:underline"
-      >
-        Back to Home
-      </Link>
-
-      {/* Links to Graphic Design and Content Writing */}
-      <div className="text-center mb-12">
-        <WorkTopBarLink />
-      </div>
-
+    <div className="max-w-screen-lg mx-auto mt-16 px-4">
+      <WorkPageTopBar title="Video Editing" />
       {/* Video Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {videoData.map((video) => (
@@ -70,7 +54,7 @@ const VideoContent = () => {
                 className="w-full h-64 object-cover"
               />
               <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center">
-                <button className="bg-green-accent text-white p-4 rounded-full">
+                <button className="bg-green-accent text-white p-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300">
                   <FaPlay />
                 </button>
               </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import WorkTopBarLink from "../../components/work/WorkTopBarLink";
+import WorkPageTopBar from "../../components/work/WorkPageTopBar";
 
 const contentWritingWorks = [
   {
@@ -77,50 +76,40 @@ const contentWritingWorks = [
 
 const ContentWriting = () => {
   return (
-    <div className="max-w-screen-lg mx-auto mt-12 px-4">
-      <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
-        Content Writing
-      </h1>
-
-      <Link
-        to="/"
-        className="inline-block text-sm text-black-accent hover:underline"
-      >
-        Back to Home
-      </Link>
-
-      {/* Links to Graphic Design and Web Development */}
-      <div className="text-center mb-12">
-        <WorkTopBarLink />
-      </div>
-
-      {/* Cards for Content Writing */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-16">
+      <WorkPageTopBar title="Content Writing" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {contentWritingWorks.map((work) => (
-          <div
+          <a
+            href={work.link}
+            target="_blank"
+            rel="noopener noreferrer"
             key={work.id}
-            className="border border-gray-200 p-4 rounded-md shadow-md cursor-pointer hover:shadow-lg transition flex flex-col"
+            className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all border border-gray-200 hover:scale-105"
           >
-            <a
-              href={work.link} // Make the entire card clickable
-              target="_blank"
-              className="flex flex-col h-full" // Make sure the link fills the whole card
-            >
+            {/* Image */}
+            <div className="relative">
               <img
                 src={work.imgSrc}
                 alt={work.title}
-                className="w-full h-40 object-cover rounded-md"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="lazy"
               />
-              <h2 className="text-xl font-semibold mt-4">{work.title}</h2>
-              <p className="text-gray-600 flex-grow">{work.desc}</p>
+            </div>
 
-              {/* Read Button */}
-              <div className="mt-4 py-2 px-4 bg-green-accent text-white rounded-md text-center hover:bg-green-accent/80 transition w-fit">
-                Read
+            {/* Content */}
+            <div className="p-6 flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                {work.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">{work.desc}</p>
+
+              {/* Button */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-accent text-white px-4 py-1 rounded-lg shadow hover:shadow-md hover:bg-green-700 transition opacity-0 group-hover:opacity-100">
+                Read More
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         ))}
       </div>
     </div>
