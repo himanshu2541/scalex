@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WorkPageTopBar from "../../components/work/WorkPageTopBar";
 
 const contentWritingWorks = [
@@ -112,6 +112,11 @@ const ContentWriting = () => {
     setIsModalOpen(false);
     setCurrentFlipbook("");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-16">

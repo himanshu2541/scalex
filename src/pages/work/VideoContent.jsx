@@ -1,31 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import WorkPageTopBar from "../../components/work/WorkPageTopBar";
 
 const videoData = [
   {
-    id: 1,
-    title: "Amazing Sunset",
-    description: "A breathtaking sunset by the beach.",
-    thumbnail: "/work/graphic_design/sample_img.jpg",
-    videoId: "dQw4w9WgXcQ", // YouTube video ID
+    title: "SBRC - Spotlight- Ms. Sruthi Mahalakshmi || IIT Kharagpur",
+    description:
+      "Branding and Relations Cell, IIT Kharagpur’s interview of the Spotlight series of Miss Sruthi Mahalakshmi.",
+    thumbnail: "/work/video_editing/spotlight.jpg",
+    videoId: "UkPls558yfY", // YouTube video ID
   },
   {
-    id: 2,
-    title: "Breathtaking Nature",
-    description: "Exploring the beauty of nature.",
-    thumbnail: "/work/graphic_design/sample_img.jpg",
-    videoId: "9bZkp7q19f0",
+    title: "TFPS IIT KGP - Rewind",
+    description: "Ideated, scripted, shot and edited a short film",
+    thumbnail: "/work/video_editing/rewind.jpg",
+    videoId: "0iGqS7aUc6I",
   },
-  {
-    id: 3,
-    title: "City Lights",
-    description: "A view of the city lights at night.",
-    thumbnail: "/work/graphic_design/sample_img.jpg",
-    videoId: "3JZ_D3ELwOQ",
-  },
-  // Add more videos as needed
 ];
 
 const VideoContent = () => {
@@ -35,14 +26,18 @@ const VideoContent = () => {
     setActiveVideo(videoId);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="max-w-screen-lg mx-auto mt-16 px-4 pb-12">
       <WorkPageTopBar title="Video Editing" />
       {/* Video Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {videoData.map((video) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {videoData.map((video, i) => (
           <div
-            key={video.id}
+            key={i}
             className="group cursor-pointer rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
             onClick={() => handleCardClick(video.videoId)}
           >

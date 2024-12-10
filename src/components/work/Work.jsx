@@ -15,6 +15,8 @@ import "./work.css";
 import MaxWidthContainer from "../MaxWidthContainer";
 import { useNavigate } from "react-router-dom";
 import workLinks from "./workLinks";
+import FadeIn from "../../components/animations/FadeIn";
+import PopUp from "../animations/PopUp";
 
 const Work = () => {
   const slides = [
@@ -79,40 +81,50 @@ const Work = () => {
           </Swiper>
         </div>
 
-        <div className="text-center mt-24">
-          <div className="text-green-accent text-2xl md:text-3xl font-bold">
-            Explore Our Work
+        <FadeIn delay="0.5" duration="0.5">
+          <div className="text-center mt-24">
+            <div className="text-green-accent text-2xl md:text-3xl font-bold">
+              Explore Our Work
+            </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Work Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {workLinks.map((obj, i) => (
-            <div
-              key={i}
-              className="hover-card bg-white shadow-md hover:shadow-lg transition-all duration-300 border border-black-accent/20 rounded-lg cursor-pointer overflow-hidden"
-              onClick={() => navigate(obj.link)}
-            >
-              {/* Image Section */}
-              <div className="h-52 overflow-hidden relative">
-                <img
-                  src={obj.img}
-                  alt={obj.title}
-                  className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
-                  loading="lazy"
-                />
-              </div>
+            <React.Fragment key={i}>
+              <PopUp delay="0.5" duration="0.5">
+                <div
+                  className="group hover-card bg-white shadow-md hover:shadow-lg transition-all duration-300 border border-black-accent/20 rounded-lg cursor-pointer overflow-hidden hover:scale-105"
+                  onClick={() => navigate(obj.link)}
+                >
+                  {/* Image Section */}
+                  <div className="h-52 overflow-hidden relative transform transition-transform duration-300 group-hover:scale-110">
+                    <img
+                      src={obj.img}
+                      alt={obj.title}
+                      className="w-full h-full object-cover "
+                      loading="lazy"
+                    />
+                  </div>
 
-              {/* Content Section */}
-              <div className="p-4">
-                <div className="font-semibold text-lg text-black-accent">
-                  {obj.title}
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-white text-xl font-semibold">Visit</p>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-4">
+                    <div className="font-semibold text-lg text-black-accent">
+                      {obj.title}
+                    </div>
+                    <div className="text-black-accent/80 text-sm mt-2">
+                      {obj.desc}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-black-accent/80 text-sm mt-2">
-                  {obj.desc}
-                </div>
-              </div>
-            </div>
+              </PopUp>
+            </React.Fragment>
           ))}
         </div>
       </div>

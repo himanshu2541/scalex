@@ -18,10 +18,10 @@ const workLinks = [
     img: "/work/web_development.jpg",
   },
   {
-    title: "Instagram Reels",
+    title: "Short Videos",
     desc: "Engaging and persuasive content.",
-    link: "/work/instagram-reels",
-    img: "/work/instagram_reels.jpg",
+    link: "/work/short-videos",
+    img: "/work/short_videos.jpg",
   },
   {
     title: "Video Editing",

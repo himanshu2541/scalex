@@ -9,10 +9,13 @@ import { Link as InPageLink } from "react-scroll";
 import { Link } from "react-router-dom";
 
 import navLinks from "./navLinks";
+import Logo from "../../assets/scalex_logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   const hamMenuVariants = {
     closed: {
@@ -54,15 +57,18 @@ const Navbar = () => {
           }
         >
           {/* Logo */}
-          <div className="font-bold">
-            <Link
-              to={"/"}
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
-              Logo
-            </Link>
+          <div
+            className="font-bold w-24 h-10 overflow-hidden flex items-center justify-center cursor-pointer"
+            onClick={() => {
+              navigate("/");
+              window.scroll(0, 0);
+            }}
+          >
+            <img
+              src={Logo}
+              alt="Logo"
+              className="-translate-y-[2px] scale-110 -translate-x-1 object-cover h-full w-full"
+            />
           </div>
           <ul className="hidden md:flex gap-2">
             {navLinks.map((link, i) => (
@@ -125,11 +131,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const NavLinkButton = ({
-  link,
-  small = false,
-  onClick = () => {},
-}) => {
+const NavLinkButton = ({ link, small = false, onClick = () => {} }) => {
   return link.isNavLink ? (
     <Link
       to={link.href}

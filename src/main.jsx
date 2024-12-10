@@ -8,8 +8,8 @@ import NotFound from "./pages/NotFound.jsx";
 import GraphicDesign from "./pages/work/GraphicDesign.jsx";
 import WebDevelopment from "./pages/work/WebDevlopment.jsx";
 import ContentWriting from "./pages/work/ContentWriting.jsx";
-import InstagramReels from "./pages/work/InstagramReels.jsx";
 import VideoContent from "./pages/work/VideoContent.jsx";
+import ShortVideo from "./pages/work/ShortVideo.jsx";
 // import Admin from "./pages/Admin.jsx";
 
 // Define routes
@@ -35,8 +35,8 @@ const router = createBrowserRouter([
         element: <ContentWriting />,
       },
       {
-        path: "work/instagram-reels",
-        element: <InstagramReels />,
+        path: "work/short-videos",
+        element: <ShortVideo />,
       },
       {
         path: "work/videos",

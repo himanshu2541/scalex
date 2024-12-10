@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 import WorkPageTopBar from "../../components/work/WorkPageTopBar";
+import FadeIn from "../../components/animations/FadeIn";
 
 const works = [
   {
@@ -67,29 +68,32 @@ const GraphicDesign = () => {
       <WorkPageTopBar title="Graphic Design" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {works.map((work) => (
-          <div
-            key={work.id}
-            className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer group hover:scale-105 "
-            onClick={() => openModal(work)}
-          >
-            <div className="relative">
-              <img
-                src={work.imgSrc}
-                alt={work.title}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-            </div>
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-green-accent">
-                {work.title}
-              </h2>
-              <p className="text-sm text-gray-600 group-hover:text-gray-800">
-                {work.desc}
-              </p>
-            </div>
-          </div>
+        {works.map((work, i) => (
+          <React.Fragment key={i}>
+            <FadeIn delay="0.4" duration="0.5">
+              <div
+                className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer group hover:scale-105 h-full"
+                onClick={() => openModal(work)}
+              >
+                <div className="relative">
+                  <img
+                    src={work.imgSrc}
+                    alt={work.title}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-green-accent">
+                    {work.title}
+                  </h2>
+                  <p className="text-sm text-gray-600 group-hover:text-gray-800">
+                    {work.desc}
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </React.Fragment>
         ))}
       </div>
 
